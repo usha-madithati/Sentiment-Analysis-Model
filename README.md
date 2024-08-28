@@ -33,6 +33,7 @@ This project is a Sentiment Analysis Model developed using Python and various da
 <br> 2. Detailed performance metrics and confusion matrix are provided in the notebook.
 
 <b>Future Enhancements:</b>
+
             1. Improve model accuracy by experimenting with advanced techniques like word embeddings (Word2Vec, GloVe) and deep learning models.
             2. Expand the dataset to include more diverse text samples for better generalization.
      
