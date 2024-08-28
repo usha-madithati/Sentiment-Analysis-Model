@@ -1,7 +1,8 @@
 # Sentiment-Analysis-Model
 This project is a Sentiment Analysis Model developed using Python and various data science libraries like matplotlib, scikit-learn, seaborn on the Google Colab platform. The model is designed to classify text data into positive, negative, or neutral sentiments with an accuracy of 85%.
 <br>
-<b>Key Features:</b>
+<b>Key Features:
+
 Platform: Google Colab
 Programming Language: Python
 Libraries Used:
