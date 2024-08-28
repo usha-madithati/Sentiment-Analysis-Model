@@ -23,7 +23,27 @@ This project is a Sentiment Analysis Model developed using Python and various da
 <b>How to Run the Model:</b>
 
 <br>1. Clone the Repository: 
-            git clone 
+            <br>git clone https://github.com/usha-madithati/Sentiment-Analysis-Model
+            <br>cd sentiment-analysis-model
+<br>2. Dependencies : Install the required python packages:
+
+            <br>pip install -r requirements.txt( install all the required packages like pandas, numpy, scikit-learn, matplotlib, seaborn.
+
+<br>3. Run the model : Execute the google colab or Jupyter Notebook to see the model in action: 
+
+            <br> Upload the "Sentiment-Analysis.ipynb" notebook to colab, install all the required dependencies and run all cells to execuete the model.
+
+<b>Results:<\b>
+
+<br> 1. The model achieved an accuracy of 85% on the test dataset.
+<br> 2. Detailed performance metrics and confusion matrix are provided in the notebook.
+
+<b>Future Enhancements:</b>
+     **Improve model accuracy by experimenting with advanced techniques like word embeddings (Word2Vec, GloVe) and deep learning models.
+     **Expand the dataset to include more diverse text samples for better generalization.
+
+<b>Conclusion:</b>
+        This Sentiment Analysis Model serves as a foundational implementation for understanding the basics of text classification using machine learning. It can be further enhanced and deployed in real-world applications requiring sentiment detection.
   
 
 
