@@ -3,6 +3,7 @@ This project is a Sentiment Analysis Model developed using Python and various da
 <br>
 
 <b>Key Features:
+
 <b>Platform: Google Colab
 <b>Programming Language: Python
 <b> Libraries Used:
@@ -12,6 +13,7 @@ This project is a Sentiment Analysis Model developed using Python and various da
 <br>4. Matplotlib & Seaborn : For visualizing the data and model performance.
 <br>
 <b>Model Overview:</b>
+
 <br>**Data Source: The dataset used for training the model was processed and cleaned using Pandas, ensuring the data was in a suitable format for analysis.
 <br>**Feature Extraction: Text data was converted into numerical form using techniques like TF-IDF,  CountVectorizer.
 <br>**Model: Various machine learning algorithms were tested, with the final model being chosen based on performance metrics. The model was trained and evaluated on the dataset, achieving an accuracy of 85%.
