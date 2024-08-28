@@ -1,0 +1,124 @@
+!pip install pandas
+import pandas as pd
+print(pd.__version__)
+!pip install nltk
+import nltk
+print(nltk.__version__)
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import re
+from textblob import TextBlob
+from wordcloud import WordCloud
+import seaborn as sns
+import matplotlib.pyplot as plt
+import cufflinks as cf
+%matplotlib inline
+from plotly.offline import init_notebook_mode,iplot
+init_notebook_mode(connected = True)
+cf.go_offline();
+import plotly.graph_objs as go
+from plotly.subplots import make_subplots
+
+import warnings
+warnings.filterwarnings("ignore")
+warnings.warn("this will not show")
+pd.set_option('display.max_columns',None)
+df= pd.read_csv("/content/cleaned_dataset.csv")
+del df[df.columns[0]]
+import pandas as pd
+
+# Load your dataset
+df = pd.read_csv("/content/cleaned_dataset.csv")
+columns_to_clean=['reviewerName','overall','reviewText','reviewTime','day_diff','helpful_yes','helpful_no','total_vote','score_pos_neg_diff','score_average_rating','wilson_lower_bound']
+df_cleaned=df.dropna(subset=columns_to_clean)
+df_cleaned.to_csv('cleaned_dataset.csv',index=False)
+
+# Check for missing values
+df = pd.read_csv("/content/cleaned_dataset.csv")
+missing_values = df.isnull().sum().sum()
+if missing_values == 0:
+    print("No missing values found.")
+else:
+    print("Missing values found in the dataset.total:{missing_values}")
+
+# Check for duplicates
+duplicate_rows = df.duplicated().sum()
+if duplicate_rows == 0:
+    print("No duplicate rows found.")
+else:
+    print("Duplicate rows found.")
+
+# Validate data types
+print("Data types:")
+print(df.dtypes)
+
+# Explore outliers (This example assumes numerical columns)
+outliers = df.describe().loc[['min', 'max']].T
+print("Outliers (min/max values per column):")
+print(outliers)
+df = pd.read_csv("/content/cleaned_dataset.csv")
+def missing_values_analysis(df):
+  na_columns_=[col for col in df.columns if df[col].isnull().sum()>0]
+  n_miss = pd.Series(df[na_columns_].isnull().sum())
+  ratio_ = (df[na_columns_].isnull().sum()/df.shape[0]*100).sort_values(ascending=True)
+  missing_df = pd.concat([n_miss,np.round(ratio_,2)],axis=1,keys=['Missing Values','Ratio'])
+  return missing_df
+def check_dataframe(df, head=5, tail=5):
+    print("SHAPE".center(82, '~'))
+    print('Rows: {}'.format(df.shape[0]))
+    print('Columns: {}'.format(df.shape[1]))
+    print("TYPES".center(82, '~'))
+    print(df.dtypes)
+    print("".center(82, '~'))
+    print(missing_values_analysis(df))
+    print('DUPLICATED VALUES'.center(83, '~'))
+    print(df.duplicated().sum())
+    print("QUANTILES".center(82, '~'))
+    numerical_columns=df.select_dtypes(include=['int','float'])
+    quantiles=numerical_columns.quantile([0,0.05,0.50,0.95,0.99,1])
+    print("QUANTILES:")
+    print(quantiles)
+check_dataframe(df)
+def check_class(data_frame):
+  nunique_df=pd.DataFrame({'Variable':data_frame.columns,
+                           'Classes':[data_frame[i].nunique()\
+                                      for i in data_frame.columns]})
+  nunique_df=nunique_df.sort_values('Classes',ascending=False)
+  nunique_df=nunique_df.reset_index(drop=True)
+  return nunique_df
+check_class(df)
+
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+constraints=['#B34D22','#EBE00C','#1FEB0C','#0C92EB','#EB0CD5']
+def categeorical_variable_summary(df,column_name):
+  fig=make_subplots(rows=1,cols=2,
+                    subplot_titles=('Countplot','Percentage'),
+                    specs=[[{"type":"xy"},{'type': "domain"}]]) # Define domain here
+  fig.add_trace(go.Bar(y=df[column_name].value_counts().values.tolist(),
+                       x=[str(i)for i in df[column_name].value_counts().index],
+                       text=df[column_name].value_counts().values.tolist(),
+                       textfont=dict(size=14),
+                       name=column_name,
+                       textposition='auto',
+                      showlegend=False,
+                       marker=dict(color=constraints,
+                                   line=dict(color='#DBE6EC',
+                                             width=1))),
+                              row=1,col=1)
+  fig.add_trace(go.Pie(labels=df[column_name].value_counts().keys(),
+                       values=df[column_name].value_counts().values,
+                       textfont=dict(size=18),
+                       textposition='auto',
+                       showlegend=False,
+                       name=column_name,
+                       marker=dict(colors=constraints)),
+                row=1,col=2)
+  fig.update_layout(title={'text':column_name,
+                           'y':0.9,
+                           'x':0.5,
+                           'xanchor':'center',
+                           'yanchor':'top'},
+                    template='plotly_white')
+  display(fig)
+
+categeorical_variable_summary(df,'overall')
