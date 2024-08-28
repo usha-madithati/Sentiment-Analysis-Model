@@ -32,7 +32,7 @@ This project is a Sentiment Analysis Model developed using Python and various da
 <br> 1. The model achieved an accuracy of 85% on the test dataset.
 <br> 2. Detailed performance metrics and confusion matrix are provided in the notebook.
 
-<b>Future Enhancements:</b>
+<b>Future Enhancements:<\b>
      **Improve model accuracy by experimenting with advanced techniques like word embeddings (Word2Vec, GloVe) and deep learning models.
      **Expand the dataset to include more diverse text samples for better generalization.
      
