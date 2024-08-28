@@ -19,9 +19,11 @@ This project is a Sentiment Analysis Model developed using Python and various da
 <br>**Feature Extraction: Text data was converted into numerical form using techniques like TF-IDF,  CountVectorizer.
 <br>**Model: Various machine learning algorithms were tested, with the final model being chosen based on performance metrics. The model was trained and evaluated on the dataset, achieving an accuracy of 85%.
 <br>**Evaluation: The model's performance was evaluated using standard metrics like accuracy, precision, recall, and F1-score. Cross-validation was also employed to ensure robustness.
+
 <b>How to Run the Model:</b>
 
-<br>1. Clone the Repository:
+<br>1. Clone the Repository: 
+            git clone 
   
 
 
